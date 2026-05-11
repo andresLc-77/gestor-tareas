@@ -1,8 +1,8 @@
-function Encabezado() {
+function Encabezado({ titulo, subtitulo }) {
   return (
     <header>
-      <h1>Mis Tareas</h1>
-      <p>Organiza tus pendientes del día</p>
+      <h1>{titulo}</h1>
+      <p>{subtitulo}</p>
     </header>
   )
 }

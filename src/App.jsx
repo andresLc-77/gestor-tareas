@@ -6,12 +6,21 @@ import PiePagina from './componentes/PiePagina'
 import './App.css'
 
 function App() {
+  const tareaEjemplo = {
+    id: 1,
+    texto: "Estudiar React",
+    completada: false
+  }
+
   return (
     <div className="app">
-      <Encabezado />
+      <Encabezado
+        titulo="Mis Tareas"
+        subtitulo="Organiza lo que tienes que hacer hoy"
+      />
       <Formulario />
       <Lista />
-      <Item />
+      <Item tarea={tareaEjemplo} />
       <PiePagina />
     </div>
   )
