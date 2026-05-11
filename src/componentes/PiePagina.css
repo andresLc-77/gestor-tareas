@@ -1,7 +1,11 @@
 .pie-pagina {
   text-align: center;
   padding: 16px;
-  font-size: 12px;
-  color: #999;
   margin-top: 32px;
+}
+
+.pie-pagina__texto {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
 }
