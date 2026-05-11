@@ -1,13 +1,18 @@
-// App.jsx — mi primer componente React
+import Encabezado from './componentes/Encabezado'
+import Formulario from './componentes/Formulario'
+import Lista from './componentes/Lista'
+import Item from './componentes/Item'
+import PiePagina from './componentes/PiePagina'
 import './App.css'
 
 function App() {
-  const tituloProyecto = "Gestor de Tareas"
-
   return (
     <div className="app">
-      <h1>{tituloProyecto}</h1>
-      <p>Si ves este texto, React está funcionando 🎉</p>
+      <Encabezado />
+      <Formulario />
+      <Lista />
+      <Item />
+      <PiePagina />
     </div>
   )
 }
