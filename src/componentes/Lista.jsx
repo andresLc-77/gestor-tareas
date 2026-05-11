@@ -1,9 +1,12 @@
-function Lista() {
+import Item from './Item'
+
+function Lista({ tareas }) {
   return (
-    <section>
-      <h2>Mis tareas</h2>
-      <p>Aquí aparecerán todas las tareas que agregues</p>
-    </section>
+    <ul className="lista">
+      {tareas.map(tarea => (
+        <Item key={tarea.id} tarea={tarea} />
+      ))}
+    </ul>
   )
 }
 
