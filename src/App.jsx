@@ -1,4 +1,5 @@
 import Encabezado from './componentes/Encabezado'
+import Formulario from './componentes/Formulario'
 import Lista from './componentes/Lista'
 import PiePagina from './componentes/PiePagina'
 import './App.css'
@@ -16,6 +17,7 @@ function App() {
         titulo="Mis Tareas"
         subtitulo="Organiza lo que tienes que hacer hoy"
       />
+      <Formulario />
       <Lista tareas={tareas} />
       <PiePagina />
     </div>
