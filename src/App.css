@@ -20,3 +20,18 @@
     padding: 0 8px;
   }
 }
+.boton-toggle {
+  display: block;
+  margin: 16px auto;
+  padding: 10px 24px;
+  background-color: #1F3864;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.boton-toggle:hover {
+  opacity: 0.85;
+}
