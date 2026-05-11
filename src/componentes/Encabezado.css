@@ -1,0 +1,18 @@
+.encabezado {
+  background-color: #1F3864;
+  color: white;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.encabezado__titulo {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
+.encabezado__subtitulo {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.85;
+}

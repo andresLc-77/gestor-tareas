@@ -1,8 +1,10 @@
+import './Encabezado.css'
+
 function Encabezado({ titulo, subtitulo }) {
   return (
-    <header>
-      <h1>{titulo}</h1>
-      <p>{subtitulo}</p>
+    <header className="encabezado">
+      <h1 className="encabezado__titulo">{titulo}</h1>
+      <p className="encabezado__subtitulo">{subtitulo}</p>
     </header>
   )
 }

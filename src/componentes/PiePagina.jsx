@@ -1,7 +1,9 @@
+import './PiePagina.css'
+
 function PiePagina() {
   return (
-    <footer>
-      <p>Gestor de Tareas · [lomelin] · SENA 2026</p>
+    <footer className="pie-pagina">
+      <p>Gestor de Tareas · [tu nombre] · SENA 2026</p>
     </footer>
   )
 }

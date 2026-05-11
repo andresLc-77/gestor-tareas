@@ -1,3 +1,4 @@
+import './Lista.css'
 import Item from './Item'
 
 function Lista({ tareas }) {
