@@ -51,3 +51,60 @@
 .item__acciones button:hover {
   opacity: 0.85;
 }
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+/* Se aplica cuando tarea.completada === true */
+.item--completada {
+  opacity: 0.6;
+  background-color: #e8f5e9;
+}
+
+.item--completada .item__texto {
+  text-decoration: line-through;
+}
+
+.item__acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.boton-completar {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.boton-completar:hover {
+  background-color: #1e8449;
+}
+
+.boton-eliminar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.boton-eliminar:hover {
+  background-color: #a93226;
+}

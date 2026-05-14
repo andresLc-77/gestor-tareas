@@ -4,3 +4,15 @@
   margin: 16px auto;
   max-width: 600px;
 }
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.lista__vacia {
+  text-align: center;
+  color: #888;
+  padding: 40px 20px;
+  font-style: italic;
+}
