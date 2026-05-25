@@ -1,0 +1,38 @@
+.filtros {
+  padding: 12px 16px;
+  background-color: white;
+  margin: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.filtros__busqueda {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.filtros__botones {
+  display: flex;
+  gap: 6px;
+}
+
+.filtros__botones button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.filtros__botones button.activo {
+  background-color: #1F3864;
+  color: white;
+  border-color: #1F3864;
+}

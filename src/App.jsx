@@ -1,67 +1,169 @@
 import { useState } from 'react'
+
+import './App.css'
+
 import Encabezado from './componentes/Encabezado'
 import Formulario from './componentes/Formulario'
 import Lista from './componentes/Lista'
 import PiePagina from './componentes/PiePagina'
-import './App.css'
+import Filtros from './componentes/Filtros'
+
+
+
+function cargarTareasIniciales() {
+
+  try {
+
+    const guardado = localStorage.getItem('tareas')
+
+    if (guardado === null) {
+      return []
+    }
+
+    return JSON.parse(guardado)
+
+  } catch (error) {
+
+    console.error('Error al cargar tareas:', error)
+
+    return []
+  }
+}
+
+
 
 function App() {
 
-  // ─── 1. EL ESTADO: array de tareas ───────────────────
-  // Ya no está "quemado". Ahora React lo controla.
-  const [tareas, setTareas] = useState([
-    { id: 1, texto: "Estudiar React",   completada: false },
-    { id: 2, texto: "Hacer ejercicio",  completada: true  },
-    { id: 3, texto: "Leer 10 paginas",  completada: false }
-  ])
+  const [tareas, setTareas] = useState(cargarTareasIniciales)
 
-  // ─── 2. CREATE: agregar una tarea nueva ──────────────
-  // Recibe el texto del Formulario y crea un objeto nuevo.
+  const [busqueda, setBusqueda] = useState("")
+
+  const [filtro, setFiltro] = useState("todas")
+
+
+
+  const guardarTareas = (nuevasTareas) => {
+
+    setTareas(nuevasTareas)
+
+    localStorage.setItem(
+      'tareas',
+      JSON.stringify(nuevasTareas)
+    )
+  }
+
+
+
   const agregarTarea = (textoNuevo) => {
+
     const tareaNueva = {
-      id: Date.now(),      // id único basado en tiempo
+      id: Date.now(),
       texto: textoNuevo,
-      completada: false    // siempre empieza pendiente
+      completada: false
     }
-    // IMPORTANTE: spread (...) crea un array NUEVO
-    // Nunca usar .push() — React no detecta ese cambio
-    setTareas([...tareas, tareaNueva])
+
+    guardarTareas([
+      ...tareas,
+      tareaNueva
+    ])
   }
 
-  // ─── 3. DELETE: eliminar una tarea ───────────────────
-  // filter devuelve un array nuevo SIN la tarea eliminada
+
+
   const eliminarTarea = (idAEliminar) => {
-    setTareas(tareas.filter(
-      tarea => tarea.id !== idAEliminar
-    ))
+
+    guardarTareas(
+      tareas.filter(
+        tarea => tarea.id !== idAEliminar
+      )
+    )
   }
 
-  // ─── 4. UPDATE: marcar como completada / pendiente ───
-  // map recorre todas y cambia solo la que coincide con el id
+
+
   const alternarCompletada = (idAAlternar) => {
-    setTareas(tareas.map(tarea =>
-      tarea.id === idAAlternar
-        ? { ...tarea, completada: !tarea.completada }
-        : tarea
-    ))
+
+    guardarTareas(
+
+      tareas.map(tarea =>
+
+        tarea.id === idAAlternar
+
+          ? {
+              ...tarea,
+              completada: !tarea.completada
+            }
+
+          : tarea
+      )
+    )
   }
+
+
+
+  const tareasFiltradas = tareas
+
+    .filter(tarea => {
+
+      if (filtro === "pendientes") {
+        return !tarea.completada
+      }
+
+      if (filtro === "completadas") {
+        return tarea.completada
+      }
+
+      return true
+    })
+
+    .filter(tarea => {
+
+      return tarea.texto
+        .toLowerCase()
+        .includes(
+          busqueda.toLowerCase()
+        )
+    })
+
+
 
   return (
-    <div className="app">
-      <Encabezado titulo="Mis Tareas" subtitulo="Organiza tu dia" />
 
-      {/* Le pasamos la función al Formulario */}
-      <Formulario alAgregar={agregarTarea} />
+    <>
 
-      {/* Le pasamos el array Y las dos funciones a Lista */}
+      <Encabezado
+        titulo="Mis Tareas"
+        subtitulo="Organiza tus pendientes"
+      />
+
+
+
+      <Formulario
+        alAgregar={agregarTarea}
+      />
+
+
+
+      <Filtros
+        busqueda={busqueda}
+        alCambiarBusqueda={setBusqueda}
+        filtro={filtro}
+        alCambiarFiltro={setFiltro}
+      />
+
+
+
       <Lista
-        tareas={tareas}
+        tareas={tareasFiltradas}
         alEliminar={eliminarTarea}
         alAlternar={alternarCompletada}
       />
 
+
+
       <PiePagina />
-    </div>
+
+    </>
   )
 }
 
