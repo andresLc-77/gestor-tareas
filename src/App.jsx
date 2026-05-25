@@ -159,8 +159,6 @@ function App() {
         alAlternar={alternarCompletada}
       />
 
-
-
       <PiePagina />
 
     </>
